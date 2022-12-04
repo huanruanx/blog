@@ -1,0 +1,212 @@
+.arti {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+}
+
+
+
+/* 默认的搜索框 */
+
+.lyear-search {
+    position: relative;
+    z-index: 0;
+    display: -webkit-inline-box;
+    display: inline-flex;
+}
+
+.lyear-search input {
+    width: 300px;
+    padding-left: 35px;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.lyear-search.lyear-search-right input {
+    padding-left: 12px;
+    padding-right: 35px;
+}
+
+.lyear-search::before {
+    content: "\f349";
+    font-family: "Material Design Icons";
+    font-size: 24px;
+    position: absolute;
+    z-index: 99;
+    top: 0px;
+    left: 0px;
+    color: rgba(77, 82, 89, 0.4);
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    cursor: text;
+}
+
+.lyear-search.lyear-search-right::before {
+    left: auto;
+    right: 0px;
+}
+
+.lyear-search.lyear-search-rounder input {
+    border-radius: 19px
+}
+
+.lyear-search.lyear-search-rounder .btn:last-child {
+    border-top-right-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+
+.lyear-search.lyear-search-circle::before {
+    z-index: -1;
+}
+
+.lyear-search.lyear-search-circle input {
+    background-color: transparent;
+    -webkit-border-radius: 19px;
+    border-radius: 19px;
+    width: 38px;
+    padding-right: 0px;
+    padding-left: 38px;
+}
+
+.lyear-search.lyear-search-circle input:focus {
+    width: 100%;
+    padding-right: 12px;
+}
+
+.lyear-search.lyear-search-circle.lyear-search-right input:focus {
+    width: 300px;
+    padding-left: 12px;
+}
+
+.lyear-search.lyear-search-noicon::before {
+    content: '';
+}
+
+.lyear-search.lyear-search-noicon .btn {
+    padding-top: 3px;
+    padding-bottom: 4px;
+}
+
+.lyear-search.lyear-search-noicon .btn .mdi {
+    line-height: 29px;
+    font-size: 20px;
+    vertical-align: top;
+}
+
+.lyear-search.lyear-search-noicon.lyear-search-left input {
+    padding-left: 12px;
+}
+
+.lyear-search.lyear-search-noicon.lyear-search-right input {
+    padding-right: 12px;
+}
+
+
+/* 长条形的数据统计布局 */
+.card-banner {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 24px;
+    padding: 15px 0px;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.035);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.035);
+}
+.card-banner .card {
+    margin-bottom: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+.card-banner [class*=col] .card:before {
+    position: absolute;
+    height: calc(100%);
+    width: 1px;
+    background: rgba(77, 82, 89, 0.05);
+    content: '';
+    right: 0;
+}
+.card-banner:not(.bg-white) [class*=col] .card:before {
+    background: rgba(255, 255, 255, 0.175);
+}
+@media screen and (max-width: 750px) {
+    .card-banner [class*=col-] .card:before {
+        width: calc(100% - 30px)!important;
+        right: 15px!important;
+        height: 1px!important;
+    }
+    .card-banner [class*=col-]:first-child .card:before{
+        display:none!important
+    }
+}
+
+
+/* 裁剪样式 */
+.image-wrapper {
+    height: 364px;
+    width: 100%;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, .075);
+    background-color: #fcfdfe;
+    overflow: hidden;
+}
+.image-preview {
+    float: left;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    border: 1px solid #f1f2f3;
+    border-radius: 2px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.image-preview img {
+    vertical-align: top;
+}
+.preview-lg {
+  height: 4.5rem;
+  width: 8rem;
+}
+.preview-md {
+  height: 2.25rem;
+  width: 4rem;
+}
+.preview-sm {
+  height: 1.125rem;
+  width: 2rem;
+}
+.preview-xs {
+  height: 0.5625rem;
+  margin-right: 0;
+  width: 1rem;
+}
+@media (max-width: 991px) {
+    #image-modal .image-btns {
+        margin-bottom: 15px;
+    }
+}
+/* loading样式 - 可整体替换之前的loading */
+@-webkit-keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-borderspinner-border {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.spinner-border {
+    display: inline-block;
+    vertical-align: text-bottom;
+    border: 0.125em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border .75s linear infinite;
+    animation: spinner-border .75s linear infinite;
+}
