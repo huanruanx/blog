@@ -1,0 +1,40 @@
+<!--
+ * @Author       : Lucifer
+ * @Date         : 2022-11-22 19:20:44
+ * @LastEditTime : 2022-11-26 21:09:35
+ * @FilePath     : \blog\app\index\view\index\index.html
+-->
+{include file='public/header'/}
+<div class="row">
+    <!-- 文章列表 -->
+    <div class="col-xl-8">
+
+        {volist name='data.article' id='art'}
+        <article class="lyear-arc">
+            <div class="arc-header">
+                <h2 class="arc-title"><a href="{:url('dispaly/?id=')}{$art.id}">{$art.title}</a></h2>
+                <ul class="arc-meta">
+                    <li><i class="mdi mdi-calendar"></i> {$art.create_time}</li>
+                    <li><i class="mdi mdi-tag-text-outline"></i> <a href="#">蔚来汽车</a>, <a href="#">财报</a></li>
+                    <li><i class="mdi mdi-comment-multiple-outline"></i> <a href="#">{$art.visit}</a></li>
+                </ul>
+            </div>
+            <div class="arc-synopsis">
+                <div class="alert alert-primary" role="alert">{$art.outline}</div>
+            </div>
+            <div class="arc-preview text-center">
+                <a href="#"><img src="{$art.outline_img}" alt="" class="img-fluid rounded"></a>
+            </div>
+        </article>
+        {/volist}
+
+        <!-- 分页 -->
+        <div class="row">
+            <div class="col-lg-12">
+                {$data.page|raw}
+            </div>
+        </div>
+        <!-- 分页 end -->
+    </div>
+    <!-- 内容 end -->
+    {include file='public/footer'/}

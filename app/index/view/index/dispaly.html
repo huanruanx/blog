@@ -1,0 +1,121 @@
+<!--
+ * @Author       : Lucifer
+ * @Date         : 2022-11-22 19:40:07
+ * @LastEditTime : 2022-11-26 21:09:59
+ * @FilePath     : \blog\app\index\view\index\dispaly.html
+-->
+{include file='public/header'/}
+
+
+<div class="row">
+    <!-- 文章阅读 -->
+    <div class="col-xl-8">
+        <article class="lyear-arc">
+            <div class="arc-header">
+                <h2 class="arc-title text-center"><a href="#">{$data.article.title}</a></h2>
+                <ul class="arc-meta">
+                    <li><i class="mdi mdi-calendar"></i> {$data.article.create_time|date="Y/m/d H:i:s"}</li>
+                    <li><i class="mdi mdi-comment-multiple-outline"></i> <a href="#">{$data.comment_count} 评论</a></li>
+                </ul>
+            </div>
+
+            <div class="lyear-arc-detail">
+                {$data.article.content|raw|htmlspecialchars_decode}
+                <div class="mt-5 lyear-comment-title">
+                    <h5><span>评论 ({$data.comment_count})</span></h5>
+                </div>
+                <ul class="media-list list-unstyled lyear-comment">
+                    {volist name='data.comment' id='comm'}
+                    <li id="comment-1">
+                        <div class="media">
+                            <img class="d-flex mr-3 rounded-circle" src="{$comm.pic}" alt="花满楼">
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="#!">{$comm.name}</a></h4>
+                                <p class="text-muted post-date">{$comm.create_time}</p>
+                                <p>{$comm.content}</p>
+                            </div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+
+                <div id="respond" class="comment-respond">
+                    <div class="mt-2">
+                        <h5><span>说点什么吧...</span> <small class="cancel-comment-reply"
+                                onclick="cancelReply()">(取消回复)</small></h5>
+                    </div>
+
+                    <form action="#" method="post" id="comment" class="mt-4 lyear-comment-form">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input id="author" class="form-control" placeholder="昵称*" name="name" type="text"
+                                        required="" />
+                                    <input type="text" class="form-control" name="article_id" value="{$data.id}" hidden
+                                        id="formGroupExampleInput" placeholder="请输入邮箱">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input id="email" class="form-control" placeholder="邮箱*" name="mail" type="text"
+                                        required="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <textarea id="comment" class="form-control" rows="5" placeholder="想说的内容"
+                                        name="content" required=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <button name="submit" onclick="comments()" type="button" id="submit"
+                                        class="btn btn-primary">发表评论</button>
+                                    <input type='hidden' name='comment_arc_id' value='1' id='comment_arc_id' />
+                                    <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+    <!-- 内容 end -->
+
+
+
+    {include file='public/footer'/}
+
+    <script>
+        function comments() {
+            $.ajax({
+                type: "POSt",
+                url: '{:url("comment")}',
+                data: $("#comment").serialize(),
+                async: false,
+                error: function (request) {
+                    alert("error");
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        window.setTimeout(function () {
+                            window.location.reload();
+                        }, 2000)
+                        showNotify(data.msg, 'success');
+                    } else {
+                        showNotify(data.msg, 'danger');
+                    }
+                }
+            });
+        }
+    </script>

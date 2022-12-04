@@ -1,0 +1,44 @@
+<!--
+ * @Author       : Lucifer
+ * @Date         : 2022-11-19 14:58:44
+ * @LastEditTime : 2022-11-27 13:46:30
+ * @FilePath     : \blog\app\index\view\links\index.html
+-->
+{include file='public/header'/}
+
+
+
+<div class="row">
+    <!-- 文章列表 -->
+    <div class="col-12">
+        <article class="lyear-arc">
+            <div class="lyear-arc-detail">
+                <h5 class="text-center mt-0 mb-3 pb-3">友情链接</h5>
+
+                <div class="alert alert-info" role="alert"> <a href="{:url('create')}">我也想添加友链耶</a> ~</div>
+            </div>
+        </article>
+    </div>
+    <!-- 内容 end -->
+
+    {volist name='data.links' id='link'}
+    <div class="col-md-3">
+        <div class="alert alert-{$link.color}" role="alert"><a target="_blank" href="{$link.url}"> {$link.name}</a></div>
+    </div>
+    {/volist}
+
+</div>
+
+</div>
+<!-- end container -->
+</section>
+</div>
+<script type="text/javascript" src="/__IJS__/jquery.min.js"></script>
+<script type="text/javascript" src="/__IJS__/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="/__IJS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="/__IJS__/main.min.js"></script>
+<script type="text/javascript" src="/__JS__/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="/__JS__/app.min.js"></script>
+</body>
+
+</html>

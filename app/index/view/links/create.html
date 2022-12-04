@@ -1,0 +1,92 @@
+<!--
+ * @Author       : Lucifer
+ * @Date         : 2022-11-19 15:19:01
+ * @LastEditTime : 2022-11-27 13:51:20
+ * @FilePath     : \blog\app\index\view\links\create.html
+-->
+{include file='public/header'/}
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-info text-body" role="alert">
+            添加友链时，请贵站先将我站添加友链，灰黑产不支持，感谢您的配合！
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form action="#!" id="links" method="post" class="row">
+                    <div class="form-group col-md-6">
+                        <label for="title">标题</label>
+                        <input type="text" class="form-control" id="title" name="name" value="" placeholder="请输入标题" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-xs-12" for="example-select">颜色</label>
+                        <select class="form-control" id="example-select" name="color" size="1">
+                            <option value="success">绿色</option>
+                            <option value="danger">红色</option>
+                            <option value="warning">黄色</option>
+                            <option value="info">蓝色</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="seo_keywords">链接</label>
+                        <input type="text" class="form-control" id="seo_keywords" name="url" value=""
+                            placeholder="需要添加http或https" />
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="seo_description">描述</label>
+                        <textarea class="form-control" id="seo_description" name="briefly" rows="5" value=""
+                            placeholder="描述一下该站点以及在十个字以内哦"></textarea>
+                    </div>
+                    <div class="form-group col-md-12 text-center">
+                        <button type="button" id="sub" onclick="save()" class="btn btn-primary ajax-post"
+                            target-form="add-form">提 交</button>
+                        <button type="button" class="btn btn-default"
+                            onclick="javascript:history.back(-1);return false;">返 回</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</div>
+<!-- end container -->
+</section>
+</div>
+<script type="text/javascript" src="/__IJS__/jquery.min.js"></script>
+<script type="text/javascript" src="/__IJS__/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="/__IJS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="/__IJS__/main.min.js"></script>
+<script type="text/javascript" src="/__JS__/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="/__JS__/app.min.js"></script>
+</body>
+
+</html>
+
+<script>
+    function save() {
+        $.ajax({
+            type: "POST",
+            url: "{:url('save')}",
+            data: $("#links").serialize(),
+            async: false,
+            error: function (request) {
+                alert("error");
+            },
+            success: function (data) {
+                if (data.code == 200) {
+                    showNotify(data.msg, "success");
+                } else {
+                    showNotify(data.msg, 'danger');
+                }
+            }
+        });
+    }
+</script>

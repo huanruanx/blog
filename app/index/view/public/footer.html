@@ -1,0 +1,51 @@
+<!--
+ * @Author       : Lucifer
+ * @Date         : 2022-11-22 19:20:17
+ * @LastEditTime : 2022-12-01 19:12:25
+ * @FilePath     : \blog\app\index\view\public\footer.html
+-->
+
+<!-- 侧边栏 -->
+<div class="col-xl-4">
+    <div class="lyear-sidebar">
+
+        <!-- 归档 -->
+        <aside class="widget">
+            <div class="widget-title">归档文章</div>
+            <ul>
+                {volist name='middle.area' id='area'}
+                <li><a href="{:url('./?area=')}{$area.id}">{$area.name}</a></li>
+                {/volist}
+            </ul>
+        </aside>
+
+        <!-- 标签 -->
+        <aside class="widget widget-tag-cloud">
+            <div class="widget-title">快捷标签</div>
+            <div class="tag-cloud">
+                <a href="#" class="badge badge-primary">首页</a>
+                <a href="#" class="badge badge-danger">分享</a>
+                <a href="#" class="badge badge-light">收藏</a>
+            </div>
+        </aside>
+    </div>
+</div>
+<!-- 侧边栏 end -->
+</div>
+
+</div>
+<!-- end container -->
+</section>
+</div>
+<script type="text/javascript" src="/__IJS__/jquery.min.js"></script>
+<script type="text/javascript" src="/__IJS__/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="/__IJS__/bootstrap.min.js"></script>
+<script type="text/javascript" src="/__IJS__/main.min.js"></script>
+<script type="text/javascript" src="/__JS__/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="/__JS__/app.min.js"></script>
+<script>
+    //
+</script>
+</body>
+
+</html>

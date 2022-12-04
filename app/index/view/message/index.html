@@ -1,0 +1,33 @@
+<!--
+ * @Author       : Lucifer
+ * @Date         : 2022-11-19 17:23:33
+ * @LastEditTime : 2022-11-19 19:12:39
+ * @FilePath     : \blog\app\index\view\message\index.html
+-->
+{include file='public/header'/}
+
+<div class="row">
+    {volist name='data.message' id='comm'}
+    <div class="col-md-3">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="http://q2.qlogo.cn/headimg_dl?dst_uin={$comm.qq}&spec=100" style="width: 30px;" class="rounded mr-2" alt="...">
+                <strong class="mr-auto">{$comm.name}</strong>
+                <small class="text-muted">{$comm.create_time}</small>
+            </div>
+            <div class="toast-body">
+                {$comm.content}
+                <hr>
+                {$comm.qq}
+            </div>
+        </div>
+    </div>
+    {/volist}
+</div>
+
+
+{include file='public/footer'/}
+
+<script>
+    $(".toast").toast({ autohide: false }).toast("show");
+</script>
